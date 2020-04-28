@@ -43,11 +43,26 @@ class BinaryTree:
             if node.getRight() is not None:
                 liste=liste + [self.printValues(node.getRight())]
                 del liste[-1]
-
+        del liste[-1]
         for i in liste:
             print(i)
 
+    def sumValues(self, node):# qui calcule la somme de toutes les valeurs des noeuds de l'arbre
+        liste=[]
+        liste.append(node)
 
+
+        if node is None:
+            return
+        if node is not None:
+            if node.getLeft() is not None:
+                liste=liste+[self.printValues(node.getLeft())]
+                del liste[-1]
+            if node.getRight() is not None:
+                liste=liste + [self.printValues(node.getRight())]
+                del liste[-1]
+
+        #print(liste)
 
 
 
@@ -74,11 +89,16 @@ if __name__=='__main__':
     noeudRoot = Node(12, noeud17, noeud5) #noeud racine
 
     Root = BinaryTree(noeudRoot) #definition en tant que noeud racine
+    #########################################################################################
 
-    print(Root.isRoot(noeud3))
+    #print(Root.isRoot(noeud3))
 
-    print(Root.size(noeud17)) #La taille d'un arbre est son nombre de noeuds
-    print("''''''''''''''''''")
+    #print(Root.size(noeudRoot)) #La taille d'un arbre est son nombre de noeuds
+
 
     print(Root.printValues(noeudRoot))
+
+
+    #print(Root.sumValues(noeudRoot))
+
 
