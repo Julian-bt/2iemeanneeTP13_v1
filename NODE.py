@@ -9,10 +9,13 @@ class Node:
         self.__val=val
         self.__right=right
         self.__left=left
+
     def getRight(self):
         return self.__right
     def getLeft(self):
         return self.__left
+    def __str__(self):
+        return str(self.__val)
 
     def setRight(self,RIGHT):
         self.__right=RIGHT

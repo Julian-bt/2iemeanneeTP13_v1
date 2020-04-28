@@ -14,23 +14,43 @@ class BinaryTree:
     def isRoot(self, node):
         return self.__root==node
 
-    def size(self, node,compteur):
-        print('right:',node.getRight())
-        print('left:',node.getLeft())
-        print('compteur:',compteur)
+    def size(self, node):
+        count=1
 
-        left=node.getLeft() #nouveau noeud ou None
-        right=node.getRight() #nouveau noeud ou None
+        if node is None:
+            return 0
+        if node is not None:
 
-        if left==None and right==None: #noeud feuille
-            return compteur
-        else:
-            if left!=None and right==None: #new noeud gauche
-                return self.size(left,compteur+1)
-            if left!=None and right!=None: #deux new noeuds
-                self.size(left,compteur+1),self.size(right,compteur+1)
-            if right!=None and left==None: #new noeud droit
-                return self.size(right,compteur+1)
+            if node.getLeft() is not None:
+                count+=self.size(node.getLeft())
+            if node.getRight() is not None:
+                count+= self.size(node.getRight())
+
+        return count
+
+
+    def printValues(self, node):
+        liste=[]
+        liste.append(node)
+
+
+        if node is None:
+            return
+        if node is not None:
+            if node.getLeft() is not None:
+                liste=liste+[self.printValues(node.getLeft())]
+                del liste[-1]
+            if node.getRight() is not None:
+                liste=liste + [self.printValues(node.getRight())]
+                del liste[-1]
+
+        for i in liste:
+            print(i)
+
+
+
+
+
 
 
 if __name__=='__main__':
@@ -57,10 +77,8 @@ if __name__=='__main__':
 
     print(Root.isRoot(noeud3))
 
-    n=1 #on comptabilise le noeud actuel
-    print(Root.size(noeud19,n))
+    print(Root.size(noeud17)) #La taille d'un arbre est son nombre de noeuds
+    print("''''''''''''''''''")
 
-
-
-
+    print(Root.printValues(noeudRoot))
 
