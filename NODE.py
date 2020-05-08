@@ -10,6 +10,8 @@ class Node:
         self.__right=right
         self.__left=left
 
+    def getVal(self):
+        return self.__val
     def getRight(self):
         return self.__right
     def getLeft(self):
